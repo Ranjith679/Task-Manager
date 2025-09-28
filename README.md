@@ -1,86 +1,83 @@
-📝 Task Manager API (Spring Boot)
+# 📝 Task Manager API
 
-A simple Task Manager REST API built with Spring Boot that allows users to manage their tasks efficiently. The app includes user authentication using JWT and supports full CRUD operations for both users and tasks.
+A simple and secure Task Manager REST API built with **Spring Boot**. It features **JWT-based authentication** and supports full **CRUD operations** for users and tasks.
 
-🔐 Features
+## 🔐 Features
 
-User Authentication
+### User Management
+- ✅ Register new users
+- 🔑 Login with JWT authentication
+- ✏️ Update user details
+- ❌ Delete users
 
-Register new users
+### Task Management
+- 🆕 Create tasks
+- 📄 View all tasks (per user)
+- 🔁 Update tasks
+- 🗑️ Delete tasks
 
-Login with JWT token
+## 🛠️ Tech Stack
 
-Update and delete user accounts
+- Java 17+
+- Spring Boot
+- Spring Security + JWT
+- Spring Data JPA (Hibernate)
+- H2 / MySQL
+- Maven
 
-Task Management
+## 🚀 Getting Started
 
-Create, read, update, and delete tasks
+### 1. Clone the Repository
 
-Each task is linked to a specific user
-
-🛠️ Tech Stack
-
-Java + Spring Boot
-
-Spring Security + JWT
-
-Spring Data JPA (Hibernate)
-
-H2 / MySQL (based on configuration)
-
-Maven
-
-🚀 Getting Started
-
-Clone the repo:
-
+```bash
 git clone https://github.com/your-username/task-manager-api.git
-
-
-Navigate into the project:
-
 cd task-manager-api
+2. Configure the Application
+Update application.properties or application.yml with your DB settings (H2/MySQL)
 
+Optional: Configure JWT secret and expiration settings
 
-Build and run the app:
-
+3. Run the Application
+bash
+Copy code
 ./mvnw spring-boot:run
+The server will start at:
 
-
-Access the API at:
-
-http://localhost:8080/api/
-
+arduino
+Copy code
+http://localhost:8080/
 📬 API Endpoints (Sample)
-
 Auth
-
-POST /api/auth/register – Register a new user
-
-POST /api/auth/login – Login and receive JWT token
+Method	Endpoint	Description
+POST	/api/auth/register	Register a user
+POST	/api/auth/login	Login and get JWT
 
 Users
-
-GET /api/users/{id} – Get user details
-
-PUT /api/users/{id} – Update user
-
-DELETE /api/users/{id} – Delete user
+Method	Endpoint	Description
+GET	/api/users/{id}	Get user details
+PUT	/api/users/{id}	Update user
+DELETE	/api/users/{id}	Delete user
 
 Tasks
+Method	Endpoint	Description
+GET	/api/tasks	Get all user tasks
+POST	/api/tasks	Create a new task
+PUT	/api/tasks/{id}	Update a task
+DELETE	/api/tasks/{id}	Delete a task
 
-GET /api/tasks – Get all tasks for logged-in user
+Note: All protected routes require a valid JWT token in the Authorization header.
 
-POST /api/tasks – Create new task
+🔒 Authentication
+Use the JWT token returned from /api/auth/login in the header for authorized requests:
 
-PUT /api/tasks/{id} – Update task
+http
+Copy code
+Authorization: Bearer <your-token>
+✅ Future Improvements
+ Add role-based access (admin/user)
 
-DELETE /api/tasks/{id} – Delete task
+ Add pagination & filtering for tasks
 
-✅ To Do
+ Swagger/OpenAPI integration
 
- Add role-based access control
-
- Swagger/OpenAPI documentation
-
- Frontend integration
+ Dockerize the app
